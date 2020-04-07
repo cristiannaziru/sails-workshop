@@ -10,10 +10,11 @@ COPY backend/package.json backend/package-lock.json backend/
 COPY frontend/package.json frontend/package-lock.json frontend/
 
 WORKDIR /var/sails_workshop/backend
-RUN npm install
+RUN npm install --save
 
 WORKDIR /var/sails_workshop/frontend
 RUN npm install
+RUN npm install lodash --save
 
 WORKDIR /var/sails_workshop
 
