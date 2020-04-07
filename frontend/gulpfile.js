@@ -24,6 +24,7 @@ gulp.task('watch', ['serve'], function(){
 gulp.task('serve', ['copyAll'], function(){
     return gulp.src(paths.temp)
         .pipe(webserver({
+            host: '0.0.0.0',
             livereload: true,
             proxies: [{
                 source: '/api',
