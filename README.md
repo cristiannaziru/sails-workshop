@@ -22,7 +22,7 @@ In this one we'll start the backend application doing the following:
 6. Open another execution connection to the newly created container
 `docker exec -it <container_id_obtained_above> bash`
 
-Where we're starting the UI application while executing `npm install && cd frontend && gulp watch`
+Where we're starting the UI application while executing `cd frontend && gulp watch`
 
 You're application should be now accessible at `http://localhost:8000` and if you've used the `-v`
 while running the container it means that your local folder is now mounted in the container and all

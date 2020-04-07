@@ -6,8 +6,8 @@ RUN npm install -g \
 
 WORKDIR /var/sails_workshop
 
-COPY backend/package.json backend/package-lock.json backend/
-COPY frontend/package.json frontend/package-lock.json frontend/
+#COPY backend/package.json backend/package-lock.json backend/
+#COPY frontend/package.json frontend/package-lock.json frontend/
 
 WORKDIR /var/sails_workshop/backend
 RUN npm install --save
