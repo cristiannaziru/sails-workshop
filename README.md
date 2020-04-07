@@ -10,8 +10,7 @@
 
 4. Run a container with the application and it's exposed ports
 
-If you want to mount to local folder in the container use -v and <local_path>:/var/sails_workshop/ where local_path is the path you've cloned the repository. This commaing will give you the conainter id which
-will be used on later commands.
+If you want to mount to local folder in the container use -v and <local_path>:/var/sails_workshop/ where local_path is the path you've cloned the repository. This commaing will give you the container id which will be used on later commands.
 `docker run -it -d -p 1337:1337 -p 8000:8000 -v <local_path>:/var/sails_workshop/ sails_workshop`
 
 5. Open one execution connection to the newly created container
