@@ -6,17 +6,18 @@ RUN npm install -g \
 
 WORKDIR /var/sails_workshop
 
-#COPY backend/package.json backend/package-lock.json backend/
-#COPY frontend/package.json frontend/package-lock.json frontend/
+COPY backend/package.json backend/package-lock.json backend/
+COPY frontend/package.json frontend/package-lock.json frontend/
 
 WORKDIR /var/sails_workshop/backend
-RUN npm install --save
+RUN npm install
 
 WORKDIR /var/sails_workshop/frontend
 RUN npm install
-RUN npm install lodash --save
 
 WORKDIR /var/sails_workshop
+
+COPY . .
 
 EXPOSE 1337
 EXPOSE 8000

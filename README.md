@@ -9,9 +9,8 @@
 `docker build -t sails_workshop:latest .`
 
 4. Run a container with the application and it's exposed ports
-
-If you want to mount to local folder in the container use -v and <local_path>:/var/sails_workshop/ where local_path is the path you've cloned the repository. This commaing will give you the container id which will be used on later commands.
-`docker run -it -d -p 1337:1337 -p 8000:8000 -v <local_path>:/var/sails_workshop/ sails_workshop`
+`docker run -it -d -p 1337:1337 -p 8000:8000 sails_workshop`
+The above command gives you the container id which will be used on later commands.
 
 5. Open one execution connection to the newly created container
 `docker exec -it <container_id_obtained_above> bash`
@@ -24,6 +23,7 @@ In this one we'll start the backend application doing the following:
 
 Where we're starting the UI application while executing `cd frontend && gulp watch`
 
-You're application should be now accessible at `http://localhost:8000` and if you've used the `-v`
-while running the container it means that your local folder is now mounted in the container and all
-your changes will be seen on the container also.
+You're application should be now accessible at `http://localhost:8000` and using Visual Studio, a plugin
+is available [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) which allows you to develop and test the code remotely using the newly deployed
+container. This can be done by attaching to the existing container and openning the folder `/var/sails_workshop`,
+folder which contains the code of the application.
