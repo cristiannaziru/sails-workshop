@@ -6,6 +6,6 @@
  */
 
 module.exports = {
-    assign_user: function () {}
+
 };
 

@@ -23,17 +23,6 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    name: {
-      type: 'string'
-    },
-
-    version: {
-      type: 'string',
-      defaultsTo: '',
-      enum: ['6.5', '6.6', ],
-
-    }
   },
-
 };
 
