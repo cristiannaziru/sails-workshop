@@ -2,7 +2,8 @@ FROM  node:8.17.0
 
 RUN npm install -g \
     sails \
-    gulp
+    gulp \ 
+    bower
 
 WORKDIR /var/sails_workshop
 
@@ -14,6 +15,7 @@ RUN npm install
 
 WORKDIR /var/sails_workshop/frontend
 RUN npm install
+RUN bower install
 
 WORKDIR /var/sails_workshop
 
