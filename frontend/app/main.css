@@ -1,0 +1,3 @@
+/* Important: Having the name main (and not app.css) will load this 
+   global styling file AFTER the bootstrap styiling is being loaded. */
+

@@ -10,8 +10,19 @@
     <!-- inject:css -->
     <!-- endinject -->
 </head>
-<body>
-    <h1>Hello!</h1>
+<body ng-app="workshop">
+    <!-- NavBar -->
+    <nav class="navbar navbar-light bg-light">
+        <a href="#!/">
+            <span>Logo comes here</span>
+        </a>
+        <a href="#!/login">
+            <button class="btn btn-primary" style='float: right'>Login</button>
+        </a>
+    </nav>
+
+    <!-- Single page application entry point -->
+    <div ng-view></div>
 
     <!-- vendorInject:js -->
     <!-- endinject -->

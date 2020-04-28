@@ -9,7 +9,7 @@ let paths = {
     tempIndex: 'temp/index.html',
 
     index: 'app/index.html',
-    appSrc: ['app/**/*.js', '!app/index.html'],
+    appSrc: ['app/**/*', '!app/index.html'],
     bowerSrc: 'bower_components/**/*',
 }
 
