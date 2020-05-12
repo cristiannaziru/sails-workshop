@@ -16,7 +16,7 @@ let paths = {
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['serve'], function(){
-    gulp.watch(paths.app, ['scripts']);
+    gulp.watch(paths.appSrc, ['scripts']);
     gulp.watch(paths.bowerSrc, ['vendors']);
     gulp.watch(paths.index, ['copyAll']);
 });
@@ -46,15 +46,17 @@ gulp.task('copyAll', function(){
 
 
 gulp.task('vendors', function() {
-    let tempIndex = gulp.src(paths.index).pipe(gulp.dest(paths.temp));
-    tempIndex
+    let tempVendors = gulp.src(mainBowerFiles()).pipe(gulp.dest(paths.tempVendor));
+    
+    return gulp.src(path.tempIndex)
         .pipe(inject(tempVendors, { relative: true, name: 'vendorInject'}))
         .pipe(gulp.dest(paths.temp))
 });
 
 gulp.task('scripts', function(){
-    let tempIndex = gulp.src(paths.index).pipe(gulp.dest(paths.temp));
-    tempIndex
-        .pipe(inject(scripts, { relative: true }))
+    let appFiles = gulp.src(paths.appSrc).pipe(gulp.dest(paths.temp));
+    
+    return gulp.src(paths.tempIndex)
+        .pipe(inject(appFiles, { relative: true }))
         .pipe(gulp.dest(paths.temp));
 });
