@@ -24,4 +24,7 @@ COPY . .
 EXPOSE 1337
 EXPOSE 8000
 
-ENTRYPOINT export LOCAL_IP=`ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 169.254 | grep -v "\-\->" | cut -f2 -d " "`
+RUN apt-get update
+RUN apt-get install net-tools
+
+ENTRYPOINT export LOCAL_IP=`ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 169.254 | grep -v "\-\->" | cut -f10 -d " "`

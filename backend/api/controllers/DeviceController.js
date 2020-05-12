@@ -6,7 +6,8 @@
  */
 
 module.exports = {
-  
-
+  ip: {type: 'string'},
+  username: {type: 'string'},
+  password: {type: 'string'},
+  port: {type: 'number'},
 };
-
