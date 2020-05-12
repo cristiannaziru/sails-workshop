@@ -10,8 +10,12 @@ app.config(function($routeProvider) {
     controller : 'LoginCtrl',
   })
   .when('/add_device', {
-    templateUrl : '/components/device/add_device.tmpl.html',
+    templateUrl : '/components/device/add/add_device.tmpl.html',
     controller : 'AddDeviceCtrl',
+  })
+  .when('/devices', {
+    templateUrl : '/components/device/view/view_devices.tmpl.html',
+    controller : 'ViewDevicesCtrl',
   })
   .otherwise({redirectTo: '/'});
 });

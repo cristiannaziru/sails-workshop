@@ -6,8 +6,11 @@
  */
 
 module.exports = {
-  ip: {type: 'string'},
-  username: {type: 'string'},
-  password: {type: 'string'},
-  port: {type: 'number'},
+  name: { type: "string" },
+  ip: { type: "string" },
+  username: { type: "string" },
+  password: { type: "string" },
+  port: { type: "number" },
+  uuid: { type: "string" },
+  current_version: { type: "string" },
 };
