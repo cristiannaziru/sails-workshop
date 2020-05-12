@@ -8,7 +8,6 @@
         $scope.device = {};
 
         function add_device(){
-            console.log('before: ', $scope.device);
             $http.post('/api/device', $scope.device).then(response => {
                 console.log("Created device: ", response);
             })
