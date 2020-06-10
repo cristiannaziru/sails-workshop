@@ -5,32 +5,33 @@
 2. Go in newly cloned directory
 `cd sails_workshop`
 
-3. Docker build command, Change `latest` to desired tag
-`docker build -t sails_workshop:latest .`
+3. You need to change the username(`MONGO_USERNAME`) and password(`MONGO_PASSWORD`) in
+the `.env`, credentials which will be used in the mongo database. And your newly defined
+`.env` file should not be pushed to bitbucket. 
 
-4. Raise a mongoDB container: 
-`docker run -p 27017:27017 --name mongoDB -d mongo:4.0.4`
+4. We'll use docker-compose command to raise up the entire environment which will include
+the frontend, backend and mongo, all of them in separate containers.
+`docker-compose up -d`
 
-5. Run a container with the application and it's exposed ports
-`docker run -it -d -p 1337:1337 -p 8000:8000 sails_workshop`
-The above command gives you the container id which will be used on later commands.
+**NOTE**: 
+- `-d` is for detached mode - which means the containers will be raised but the logs
+will not be displayed while they are getting raised.
+- it can be used without `-d` and you'll see all the logs from all three containers
+mixed together
 
-6. Open one execution connection to the newly created container
-`docker exec -it <container_id_obtained_above> bash`
+You're application should be now accessible at `http://localhost:8000` and since the local code
+is now synced in the following manner, local frontend in the frontend container and local backend
+in the backend container, there is no need to run anything remotely anymore. All local changes will
+be seen directly on the containers because of the use of the docker volumes. 
 
-In this one we'll start the backend application doing the following:
-`cd backend && sails lift`
+To bring down the environment use `docker-compose down`, while being in the `sails_workshop` folder,
+which will stop and delete the existing containers.
 
-7. Open another execution connection to the newly created container
-`docker exec -it <container_id_obtained_above> bash`
+To see the logs of each containers, you can attach yourself to the container with the following
+command `docker-compose --follow <name_of_the_container>`
 
-Where we're starting the UI application while executing `cd frontend && gulp watch`
-
-You're application should be now accessible at `http://localhost:8000` and using Visual Studio, a plugin
-is available [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) which allows you to develop and test the code remotely using the newly deployed
-container. This can be done by attaching to the existing container and openning the folder `/var/sails_workshop`,
-folder which contains the code of the application.
-
+Displaying all the containers raised with `docker-compose up` can be done with the following
+`docker-compose ps`
 
 # Steps to setup the environment (Local Computer)
 

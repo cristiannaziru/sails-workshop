@@ -1,30 +1,25 @@
-FROM  node:8.17.0
+FROM  node:8.17.0 AS base
 
+RUN apt-get update && apt-get install -y netcat
 RUN npm install -g \
     sails \
-    gulp \ 
-    bower
+    gulp
 
 WORKDIR /var/sails_workshop
 
-COPY backend/package.json backend/package-lock.json backend/
-COPY frontend/package.json frontend/package-lock.json frontend/bower.json frontend/
-
-WORKDIR /var/sails_workshop/backend
+# build backend
+FROM base AS backend-base
+COPY backend/package.json backend/package-lock.json ./
 RUN npm install
+COPY backend/ .
+CMD ["sails", "lift"]
 
-WORKDIR /var/sails_workshop/frontend
-RUN npm install
-RUN bower install --allow-root --config.interactive=false
-
-WORKDIR /var/sails_workshop
-
-COPY . .
-
+# build frontend
+FROM base AS frontend-base
 EXPOSE 1337
 EXPOSE 8000
 
-RUN apt-get update
-RUN apt-get install net-tools
-
-ENTRYPOINT export LOCAL_IP=`ifconfig | grep "inet " | grep -v 127.0.0.1 | grep -v 169.254 | grep -v "\-\->" | cut -f10 -d " "`
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm install
+COPY frontend/ .
+CMD ["gulp", "watch"]

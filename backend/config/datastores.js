@@ -13,6 +13,14 @@
  * https://sailsjs.com/config/datastores
  */
 
+const MONGO_USERNAME = process.env.MONGO_USERNAME,
+      MONGO_PASSWORD = process.env.MONGO_PASSWORD,
+      MONGO_HOSTNAME = process.env.MONGO_HOSTNAME,
+      MONGO_PORT = process.env.MONGO_PORT,
+      MONGO_DB = process.env.MONGO_DB,
+      url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+
+
 module.exports.datastores = {
 
 
@@ -49,7 +57,7 @@ module.exports.datastores = {
     *                                                                          *
     ***************************************************************************/
     adapter: 'sails-mongo',
-    url: `mongodb://0.0.0.0:27017/database`
+    url: url
   },
 
 
