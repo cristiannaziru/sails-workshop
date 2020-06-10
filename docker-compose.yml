@@ -1,0 +1,57 @@
+version: "3.8"
+services:
+  backend:
+    build:
+        context: .
+        target: backend-base
+    container_name: backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+        - MONGO_HOSTNAME=db
+    volumes:
+        - nodemodules:/var/sails_workshop/node_modules
+        - ./backend:/var/sails_workshop
+    networks:
+      - app-network
+    command: ./wait-for.sh db:27017 -t 60 -- sails lift
+    
+  frontend:
+    build:
+      context: .
+      target: frontend-base
+    container_name: frontend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+        - MONGO_HOSTNAME=db
+    stdin_open: true
+    ports:
+        - "8000:8000"
+        - "1337:1337"
+    volumes:
+      - nodemodules_frontend:/var/sails_workshop/node_modules
+      - ./frontend:/var/sails_workshop
+
+  db:
+    image: mongo:4.2-bionic
+    hostname: db
+    container_name: db
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+    volumes:  
+      - dbdata:/data/database
+    networks:
+      - app-network 
+
+volumes:
+  nodemodules:
+  nodemodules_frontend:
+  dbdata:
+
+networks:
+  app-network:
+    driver: bridge
