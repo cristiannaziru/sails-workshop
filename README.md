@@ -28,7 +28,7 @@ To bring down the environment use `docker-compose down`, while being in the `sai
 which will stop and delete the existing containers.
 
 To see the logs of each containers, you can attach yourself to the container with the following
-command `docker-compose --follow <name_of_the_container>`
+command `docker-compose logs --follow <name_of_the_container>`
 
 Displaying all the containers raised with `docker-compose up` can be done with the following
 `docker-compose ps`
