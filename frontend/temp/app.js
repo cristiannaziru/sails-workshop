@@ -17,5 +17,13 @@ app.config(function($routeProvider) {
     templateUrl : '/components/device/view/view_devices.tmpl.html',
     controller : 'ViewDevicesCtrl',
   })
+  .when('/monitor', {
+    templateUrl : '/components/monitor/monitor.tmpl.html',
+    controller : 'MonitorCtrl',
+  })
+  .when('/upgrade', {
+    templateUrl : '/components/upgrade/upgrade.tmpl.html',
+    controller : 'UpgradeCtrl',
+  })
   .otherwise({redirectTo: '/'});
 });
