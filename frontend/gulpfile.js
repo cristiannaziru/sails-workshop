@@ -22,13 +22,15 @@ gulp.task('watch', ['serve'], function(){
 });
 
 gulp.task('serve', ['copyAll'], function(){
+    const BACKEND_HOSTNAME = process.env.BACKEND_HOSTNAME ? process.env.BACKEND_HOSTNAME : 'localhost';
+
     return gulp.src(paths.temp)
         .pipe(webserver({
             host: '0.0.0.0',
             livereload: true,
             proxies: [{
                 source: '/api',
-                target: 'http://localhost:1337',
+                target: `http://${BACKEND_HOSTNAME}:1337`,
             }]
         }));
 });

@@ -1,12 +1,15 @@
 version: "3.8"
 services:
   backend:
+    hostname: backend
     build:
         context: .
         target: backend-base
     container_name: backend
     restart: unless-stopped
     env_file: .env
+    ports:
+      - "1337:1337"
     environment:
         - MONGO_HOSTNAME=db
     volumes:
@@ -14,7 +17,8 @@ services:
         - ./backend:/var/sails_workshop
     networks:
       - app-network
-    command: ./wait-for.sh db:27017 -t 60 -- sails lift
+    depends_on:
+      - db
     
   frontend:
     build:
@@ -25,13 +29,18 @@ services:
     env_file: .env
     environment:
         - MONGO_HOSTNAME=db
+        - BACKEND_HOSTNAME=backend
     stdin_open: true
     ports:
         - "8000:8000"
-        - "1337:1337"
     volumes:
       - nodemodules_frontend:/var/sails_workshop/node_modules
+      - bower_components:/var/sails_workshop/bower_components
       - ./frontend:/var/sails_workshop
+    networks:
+      - app-network 
+    depends_on:
+      - backend
 
   db:
     image: mongo:4.2-bionic
@@ -50,6 +59,7 @@ services:
 volumes:
   nodemodules:
   nodemodules_frontend:
+  bower_components:
   dbdata:
 
 networks:
