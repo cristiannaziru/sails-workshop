@@ -2,7 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="favicon.ico" type="image" sizes="16x16">
+    <title>Cisco Upgrade</title>
 
     <!-- vendorInject:css -->
     <!-- endinject -->
@@ -10,25 +11,17 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="directives/nav/nav-bar.css">
+    <link rel="stylesheet" href="components/login/login.css">
+    <link rel="stylesheet" href="components/home/home.css">
+    <link rel="stylesheet" href="components/monitor/monitor.css">
+    <link rel="stylesheet" href="components/upgrade/upgrade.css">
+    <link rel="stylesheet" href="components/device/view/view_devices.css">
+    <link rel="stylesheet" href="components/device/add/add_device.css">
     <!-- endinject -->
 </head>
 <body ng-app="workshop">
-    <!-- NavBar -->
-    <nav class="navbar navbar-light bg-light">
-        <a href="#!/">
-            <span>Logo comes here</span>
-        </a>
-        <a href="#!/add_device">
-            <button class="btn btn-primary">Add Device</button>
-        </a>
-        <a href="#!/devices">
-            <button class="btn btn-primary">View Devices</button>
-        </a>
-        <a href="#!/login">
-            <button class="btn btn-primary" style='float: right'>Login</button>
-        </a>
-    </nav>
-
+    <nav-bar></nav-bar>
     <!-- Single page application entry point -->
     <div ng-view></div>
 
@@ -39,11 +32,14 @@
 
     <!-- inject:js -->
     <script src="app.js"></script>
+    <script src="directives/nav/nav-bar.ctrl.js"></script>
     <script src="directives/display-devices/display-devices.js"></script>
     <script src="components/login/login.ctrl.js"></script>
     <script src="components/home/home.ctrl.js"></script>
-    <script src="components/device/add/add_device.ctrl.js"></script>
+    <script src="components/monitor/monitor.ctrl.js"></script>
+    <script src="components/upgrade/upgrade.ctrl.js"></script>
     <script src="components/device/view/view_devices.ctrl.js"></script>
+    <script src="components/device/add/add_device.ctrl.js"></script>
     <!-- endinject -->
 </body>
 </html>
