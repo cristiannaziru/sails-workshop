@@ -2,7 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="favicon.ico" type="image" sizes="16x16">
+    <title>Cisco Upgrade</title>
 
     <!-- vendorInject:css -->
     <!-- endinject -->
@@ -10,8 +11,10 @@
     <!-- inject:css -->
     <!-- endinject -->
 </head>
-<body>
-    <h1>Hello!</h1>
+<body ng-app="workshop">
+    <nav-bar></nav-bar>
+    <!-- Single page application entry point -->
+    <div ng-view></div>
 
     <!-- vendorInject:js -->
     <!-- endinject -->

@@ -9,25 +9,28 @@ let paths = {
     tempIndex: 'temp/index.html',
 
     index: 'app/index.html',
-    appSrc: ['app/**/*.js', '!app/index.html'],
+    appSrc: ['app/**/*', '!app/index.html'],
     bowerSrc: 'bower_components/**/*',
 }
 
 gulp.task('default', ['watch']);
 
 gulp.task('watch', ['serve'], function(){
-    gulp.watch(paths.app, ['scripts']);
+    gulp.watch(paths.appSrc, ['scripts']);
     gulp.watch(paths.bowerSrc, ['vendors']);
     gulp.watch(paths.index, ['copyAll']);
 });
 
 gulp.task('serve', ['copyAll'], function(){
+    const BACKEND_HOSTNAME = process.env.BACKEND_HOSTNAME ? process.env.BACKEND_HOSTNAME : 'localhost';
+
     return gulp.src(paths.temp)
         .pipe(webserver({
+            host: '0.0.0.0',
             livereload: true,
             proxies: [{
                 source: '/api',
-                target: 'http://localhost:1337',
+                target: `http://${BACKEND_HOSTNAME}:1337`,
             }]
         }));
 });
@@ -45,15 +48,17 @@ gulp.task('copyAll', function(){
 
 
 gulp.task('vendors', function() {
-    let tempIndex = gulp.src(paths.index).pipe(gulp.dest(paths.temp));
-    tempIndex
+    let tempVendors = gulp.src(mainBowerFiles()).pipe(gulp.dest(paths.tempVendor));
+    
+    return gulp.src(path.tempIndex)
         .pipe(inject(tempVendors, { relative: true, name: 'vendorInject'}))
         .pipe(gulp.dest(paths.temp))
 });
 
 gulp.task('scripts', function(){
-    let tempIndex = gulp.src(paths.index).pipe(gulp.dest(paths.temp));
-    tempIndex
-        .pipe(inject(scripts, { relative: true }))
+    let appFiles = gulp.src(paths.appSrc).pipe(gulp.dest(paths.temp));
+    
+    return gulp.src(paths.tempIndex)
+        .pipe(inject(appFiles, { relative: true }))
         .pipe(gulp.dest(paths.temp));
 });
