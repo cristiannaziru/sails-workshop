@@ -18,7 +18,7 @@ const MONGO_USERNAME = process.env.MONGO_USERNAME,
       MONGO_HOSTNAME = process.env.MONGO_HOSTNAME,
       MONGO_PORT = process.env.MONGO_PORT,
       MONGO_DB = process.env.MONGO_DB,
-      url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+      url = `mongodb://0.0.0.0:27017/database`;
 
 
 module.exports.datastores = {
