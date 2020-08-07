@@ -11,6 +11,8 @@ let paths = {
     index: 'app/index.html',
     appSrc: ['app/**/*', '!app/index.html'],
     bowerSrc: 'bower_components/**/*',
+    
+    logo: '../cisco_logo.png'
 }
 
 gulp.task('default', ['watch']);
@@ -19,7 +21,7 @@ gulp.task('watch', ['serve'], function(){
     gulp.watch(paths.appSrc, ['scripts']);
     gulp.watch(paths.bowerSrc, ['vendors']);
     gulp.watch(paths.index, ['copyAll']);
-    gulp.src("../cisco_logo.png")
+    gulp.src(paths.logo)
         .pipe(gulp.dest(paths.temp));
 });
 
