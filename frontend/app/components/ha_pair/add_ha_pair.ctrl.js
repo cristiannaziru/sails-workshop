@@ -3,8 +3,8 @@
         .module('workshop')
         .controller('AddHAPairCtrl', AddHAPairCtrl);
 
-    AddHAPairCtrl.$inject = ['$scope', '$http']
-    function AddHAPairCtrl($scope, $http) {
+    AddHAPairCtrl.$inject = ['$scope', 'HAPairService']
+    function AddHAPairCtrl($scope, HAPairService) {
         $scope.message = "";
 
         function upload_device_info() {
@@ -52,8 +52,8 @@
         }
 
         function add_ha_pair(ha_pair) {
-            $http.post('/api/hapair', ha_pair).then(response => {
-                console.log("Created HA pair:", response);
+            HAPairService.add_ha_pair(ha_pair).then(response => {
+                console.log("Created HA Pair:", response);
             });
         }
     }
