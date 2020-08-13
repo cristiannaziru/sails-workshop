@@ -25,5 +25,9 @@ app.config(function($routeProvider) {
     templateUrl : '/components/upgrade/upgrade.tmpl.html',
     controller : 'UpgradeCtrl',
   })
+  .when('/add_ha_pair', {
+    templateUrl : '/components/ha_pair/add_ha_pair.tmpl.html',
+    controller : 'AddHAPairCtrl',
+  })
   .otherwise({redirectTo: '/'});
 });
