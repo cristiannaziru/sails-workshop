@@ -9,6 +9,5 @@
  */
 
 module.exports.routes = {
-
-
+    'get /hapair': 'HAPairController.getHAPairs'
 };

@@ -6,5 +6,9 @@
  */
 
 module.exports = {
-
+    getHAPairs: function (req, res) {
+        HAPair.find().then(response => {
+            res.send(response);
+        })
+    }
 };
