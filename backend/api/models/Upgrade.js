@@ -1,5 +1,5 @@
 /**
- * HAPair.js
+ * Upgrade.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,12 +13,7 @@ module.exports = {
       //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
       //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
   
-      ha: {type: 'string'},
-      secondary: {type: 'json'},
-      primary: {type: 'json'},
-      name: {type: 'string'},
-      type: {type: 'string'},
-      pid: {type: 'string'},
+      lastLogMessage : {type: 'string'},
   
       //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
       //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -29,9 +24,8 @@ module.exports = {
       //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
       //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
   
-      upgrades: {
-        collection: 'upgrade',
-        via: 'hapair'
+      hapair: {
+        model: 'hapair'
       }
     },
   
