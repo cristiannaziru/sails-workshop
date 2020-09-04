@@ -3,32 +3,23 @@
         .module('workshop')
         .controller('AddHAPairCtrl', AddHAPairCtrl);
 
-    AddHAPairCtrl.$inject = ['$scope', 'HAPairService']
-    function AddHAPairCtrl($scope, HAPairService) {
+    AddHAPairCtrl.$inject = ['$scope', 'HAPairService', 'readFileService']
+    function AddHAPairCtrl($scope, HAPairService, readFileService) {
         $scope.message = "";
 
-        function upload_device_info() {
-            const file = document.getElementById('device.info').files[0];
-            if (file !== undefined)
-                parse_device_info(file);
-            else
-                $scope.message = "No file selected";
+        $scope.upload_device_info = function () {
+            readFileService.read("device_info", load_handler);
         }
-        $scope.upload_device_info = upload_device_info;
 
-        function parse_device_info(file) {
-            const reader = new FileReader();
-            reader.readAsText(file);
-            reader.onloadend = event => {
-                if (event.target.readyState === FileReader.DONE) {
-                    try {
-                        let ha_pairs = JSON.parse(event.target.result);
-                        upload_ha_pairs(ha_pairs);
-                    } catch (SyntaxError) {
-                        $scope.$apply(() => { $scope.message = "Invalid JSON file"; });
-                    }
+        function load_handler(event) {
+            if (event.target.readyState === FileReader.DONE) {
+                try {
+                    let ha_pairs = JSON.parse(event.target.result);
+                    upload_ha_pairs(ha_pairs);
+                } catch (SyntaxError) {
+                    $scope.$apply(() => { $scope.message = "Invalid JSON file"; });
                 }
-            };
+            }
         }
 
         function upload_ha_pairs(ha_pairs) {

@@ -5,7 +5,10 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+const fs = require('fs');
 const { spawn } = require('child_process');
+const path = require('path');
+const filesPath = path.resolve('../backend/api/files');
 
 module.exports = {
     addUpgrade: function (req, res) {
@@ -37,10 +40,34 @@ module.exports = {
             });
 
             process.on('close', (code) => {
-                console.log(`child process exited with code ${code}`);
+                Upgrade.unsubscribe(req, [upgradeId]);
             });
 
         }
+    },
+    generateDeviceInfo: function (req, res) {
+        const haPairs = req.body;
+        const pairs = {};
+        for (let pair of haPairs) {
+            pairs[pair.ha] = {
+                primary: pair.primary,
+                secondary: pair.secondary,
+                name: pair.name,
+                type: pair.type,
+                id: pair.pid
+            };
+        }
+        fs.writeFile(filesPath + "/device_info.json", JSON.stringify(pairs), (err) => {
+            if (err) throw err;
+            res.send("Success!");
+        });
+    },
+    generateBaseDevice: function (req, res) {
+        const info = req.body;
+        fs.writeFile(filesPath + "/base_device.json", JSON.stringify(info), (err) => {
+            if (err) throw err;
+            res.send("Success!");
+        });
     }
 };
 

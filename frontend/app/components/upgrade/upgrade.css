@@ -2,7 +2,22 @@
     display: grid;
 }
 
-.upgrade-button {
-    margin-left: auto;
-    margin-right: 1em;
+
+#device_form {
+    display: grid;
+    place-items: center;
 }
+
+.table {
+    margin-bottom: 0;
+}
+
+.display-pairs{
+    text-align: center;
+}
+
+.display-pairs > thead {
+    font-size: larger;
+    font-weight: 700;
+    color: white;
+ }
