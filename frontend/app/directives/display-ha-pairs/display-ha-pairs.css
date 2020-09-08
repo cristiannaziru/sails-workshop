@@ -1,0 +1,55 @@
+.ha-table > thead {
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    color: black;
+    background-color: #e2a90d;
+}
+
+.ha-table > tbody {
+    color: black;
+    text-align: center;
+}
+
+table.dataTable > tbody > tr.child:hover {
+    background: white !important;
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+    width: 100%;
+}
+
+.row-table > thead {
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    color: black;
+}
+
+.row-table  > tbody {
+    color: black;
+    text-align: center;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    color: white !important;
+    background: gray;
+ }
+ 
+ .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+ .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+     background: #2AA198;
+ }
+ 
+ .dataTables_wrapper .dataTables_paginate .paginate_button {
+     border: 1px solid #2AA198;
+     color: white !important;
+ }
+ .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+     background: #2AA198;
+ }
+ 
+ .dataTables_length, .dataTables_filter, .dataTables_info {
+    color: #e2a90d !important;
+ }
+ 
