@@ -14,6 +14,7 @@
         io.socket.on('upgrade', function (response) {
             if (response.verb === 'upgrade') {
                 $scope.logs.push(response.lastLogMessage);
+                console.log(response.lastLogMessage);
                 $scope.$apply();
             }
         });
@@ -40,27 +41,35 @@
             for (let index = 0; index < selectedHAPairs.length; index++) {
                 let id = selectedHAPairs[index].id;
                 io.socket.get(`/upgrade/${id}`);
-            }   
-
+            }
         };
 
         $scope.open_dialog = function () {
             const dialog = angular.element("#modalDialog");
+            const background = angular.element("#startUpgrade");
+            const nav = angular.element("#mainNav");
             if (dialog) {
                 dialog.fadeIn();
+                background.addClass('blur');
+                nav.addClass('blur');
             }
         };
 
         $scope.close_dialog = function () {
             const dialog = angular.element("#modalDialog");
+            const background = angular.element("#startUpgrade");
+            const nav = angular.element("#mainNav");
             if (dialog) {
                 dialog.fadeOut();
+                background.removeClass('blur');
+                nav.removeClass('blur');
             }
         };
 
         $scope.upload_device_info = function () {
             readFileService.read("base_device", load_handler);
         };
+
 
         function load_handler(event) {
             if (event.target.readyState === FileReader.DONE) {
