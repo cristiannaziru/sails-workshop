@@ -8,7 +8,6 @@
     /** @ngInject */
     function displayHaPairsDirective(DTOptionsBuilder, DTColumnBuilder) {
         function displayHaPairs() {
-            var info = "Abracadabra";
             var vm = this;
             vm.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
