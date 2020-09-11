@@ -12,4 +12,5 @@ module.exports.routes = {
     'get /upgrade/:id': 'UpgradeController.addUpgrade',
     'post /upgrade/device-info': 'UpgradeController.generateDeviceInfo',
     'post /upgrade/base-device': 'UpgradeController.generateBaseDevice',
+    'get /hapair': 'HAPairController.getHAPairs'
 };
