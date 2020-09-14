@@ -3,9 +3,13 @@
         .module('workshop')
         .controller('MonitorCtrl', MonitorCtrl);
 
-    MonitorCtrl.$inject = ['$scope', '$http']
-    function MonitorCtrl($scope, $http) {
-        $scope.message =  "This is monitor page."
-
+    MonitorCtrl.$inject = ['$scope']
+    function MonitorCtrl($scope) {
+        io.socket.on('statistics', function (response) {
+            response = JSON.parse(response);
+            $scope.status = response.UPGRADE;
+            $scope.$apply();
+        })
+        $scope.get_status = io.socket.get("/upgrade/current-status");
     }
-} ());
+}());

@@ -1,0 +1,29 @@
+<div class="ha-box">
+    <div id="monitor">
+        <table datatable="" dt-options="showCase.dtOptions" dt-columns="showCase.dtColumns"
+            class="table table-bordered ha-table" width="100%"></table>
+    </div>
+    <div class="modal" id="modalDialog" tabindex="-1" role="dialog" aria-labelledby="modalDialogLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDialogLabel">Log Info</h5>
+                </div>
+                <div class="modal-body">
+                    <div id="log-form">
+                        <div id="log-box">
+                            <p>
+                                {{showCase.log.data}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                        ng-click="showCase.close_dialog(showCase.log.id, showCase.log.name)">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

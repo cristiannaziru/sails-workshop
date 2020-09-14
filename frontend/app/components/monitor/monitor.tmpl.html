@@ -1,11 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>{{message}}</h1>
-</body>
-</html>
+<div>
+    <div class="statistics-wrapper" id="statistics">
+        <div class="statistics-box">
+            <div class="statistics-container">
+                <table class="table table-bordered statistics-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Pairs
+                            </th>
+                            <th scope="col">
+                                Number
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Done
+                            </td>
+                            <td>
+                                {{status.success.length + status.failed.length}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Waiting
+                            </td>
+                            <td>
+                                {{status.waiting}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                In progress
+                            </td>
+                            <td>
+                                {{status.working.length}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        <display-upgrades>
+        </display-upgrades>
+    </div>
+</div>

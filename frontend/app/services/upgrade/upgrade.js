@@ -9,5 +9,8 @@
         this.generate_base_device = function (info) {
             return $http.post('/api/upgrade/base-device', info);
         };
+        this.get_tmp_merged = function () {
+            return $http.get('/api/upgrade/tmp-merged');
+        };
     }
 }());

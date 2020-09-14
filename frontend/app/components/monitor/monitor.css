@@ -1,0 +1,33 @@
+.statistics-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.statistics-box {
+    grid-column-start: 2;
+    grid-row-end: 3;
+    margin: 2% 2% 1% 1%;
+    background-color: #073642;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.statistics-container {
+    margin: 2% 1%;
+}
+
+.statistics-table {
+    font-weight: 700;
+    text-align: center;
+    font-size: larger;
+    color: black;
+}
+
+.statistics-table > thead {
+    background-color: #e2a90d;
+}
+
+.statistics-table > tbody {
+    background-color: white;
+}

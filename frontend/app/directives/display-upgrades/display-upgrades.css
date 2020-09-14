@@ -1,0 +1,32 @@
+.monitor-table > thead {
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    color: black;
+}
+
+.monitor-table  > tbody {
+    color: black;
+    text-align: center;
+}
+
+.table td {
+    vertical-align: middle !important;
+}
+
+#log-form {
+    display: grid;
+    font-size: small;
+    border-radius: 10px;
+    place-items: center;
+    color:white;
+    white-space: pre-wrap;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #073642;
+    border-radius: 10px;
+}
+
+#log-box {
+    margin: 0 1%;
+}

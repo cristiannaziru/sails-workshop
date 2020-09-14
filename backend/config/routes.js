@@ -12,5 +12,10 @@ module.exports.routes = {
     'get /upgrade/:id': 'UpgradeController.addUpgrade',
     'post /upgrade/device-info': 'UpgradeController.generateDeviceInfo',
     'post /upgrade/base-device': 'UpgradeController.generateBaseDevice',
-    'get /hapair': 'HAPairController.getHAPairs'
+    'get /hapair': 'HAPairController.getHAPairs',
+    'get /upgrade/tmp-merged': 'UpgradeController.getTmpMerged',
+    'get /upgrade/current-status': 'UpgradeController.getCurrentStatus',
+    'post /upgrade/log': 'UpgradeController.getLog',
+    'post /upgrade/status': 'UpgradeController.getStatus',
+    'post /upgrade/last-log-message': 'UpgradeController.getLastLogMessage'
 };
