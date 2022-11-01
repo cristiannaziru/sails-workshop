@@ -9,7 +9,7 @@
   "author": "Cristian Naziru <cristian.naziru@gmail.com> (https://cristiannaziru.github.io/react-components-chris/)",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.8.10",
+    "gulp": "^4.0.2",
     "gulp-inject": "^1.0.2",
     "main-bower-files": "^2.4.1"
   },
